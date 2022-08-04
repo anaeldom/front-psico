@@ -1,0 +1,33 @@
+<div class="container mt-5 listaAgend">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span>LISTA DE LA AGENDA</span>
+                    <button class="btn btn-success float-end" routerLink="/agenda/add-agenda">Nuevo</button>
+
+                    <table *ngIf="listaAgenda.length > 0" class="table table-striped mt-2">
+                        <thead>
+                          <tr>
+                            <th scope="col">Citas en general</th>                          
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let agenda of listaAgenda">
+                            
+                            <td>{{ agenda.id_cita }}</td>
+                            
+                            <td>
+                                <i (click)="eliminarAgenda(agenda._id)" class="fa fa-solid fa-trash"></i>
+                                <i [routerLink]="['edit-agenda', agenda._id]" class="fa fa-solid fa-pen-to-square"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <h5 *ngIf="listaAgenda.length == 0">No hay datos.</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

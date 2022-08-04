@@ -1,0 +1,64 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <span class="text-center"> {{ titulo | uppercase }}</span>
+                    <form class="mb-3" [formGroup]="usuarioForm" (ngSubmit)="addUsuario()">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Nombre del usuario"  formControlName="nombreu">
+                            <div class="text-danger" *ngIf="usuarioForm.get('nombreu')?.hasError('required') && usuarioForm.get('nombreu')?.touched">
+                                <span>Falta el nombre del usuario<strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="password" class="form-control" placeholder="Contraseña"  formControlName="contrau">
+                            <div class="text-danger" *ngIf="usuarioForm.get('contrau')?.hasError('required') && usuarioForm.get('contrau')?.touched">
+                                <span>Falta la contraseña<strong>es obligatorio</strong>.</span>
+                            </div>    
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="password" class="form-control" placeholder="Vuelve a escribir tu contraseña"  formControlName="confirmcontrau">
+                            <div class="text-danger" *ngIf="usuarioForm.get('confirmcontrau')?.hasError('required') && usuarioForm.get('confirmcontrau')?.touched">
+                                <span>Falta la confirmacion de la contraseña <strong>es obligatorio</strong>.</span>
+                            </div>
+                            <div class="text-danger" *ngIf="usuarioForm.get('confirmcontrau')?.value != usuarioForm.get('contrau')?.value && usuarioForm.get('confirmcontrau')?.touched">
+                                <span>No coincide <strong>la contraseña</strong>.</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <input type="email" class="form-control" placeholder="Correo electronico"  formControlName="correou">
+                            <div class="text-danger" *ngIf="usuarioForm.get('correou')?.hasError('required') && usuarioForm.get('correou')?.touched">
+                                <span>Falta el correo electronico <strong>es obligatorio</strong>.</span>
+                            </div>
+                            <div class="text-danger" *ngIf="usuarioForm.get('correou')?.hasError('email') && usuarioForm.get('correou')?.touched">
+                                <span>Correo electronico <strong>invalido</strong>.</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3"> 
+                            <label for="tipoUsuario">Tipo de usuario</label> <br>
+                            <select class="form-control" name="tipoUsuario" id="tipoUsuario" formControlName="tipou">
+                                <!--<option value="administrador">Administrador</option>--> 
+                                <option value="paciente">Paciente</option>
+                                <option value="medico">Medico</option>
+                            </select>
+                            <div class="text-danger" *ngIf="usuarioForm.get('tipou')?.hasError('required') && usuarioForm.dirty && usuarioForm.get('tipou')?.touched">
+                                <span>Falta el el tipo de usuario <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 text-center">
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                            <button class="btn btn-secondary" routerLink="/usuario">Volver</button>
+                        </div>
+                        
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

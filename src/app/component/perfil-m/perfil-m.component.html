@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card mt-5">
+                <div class="card-header">
+                    <span class="txt" style="color: black;">Perfil del paciente</span>
+                </div>
+                <div class="card-body">
+                    <p class="fs-1 text-center" style="color: black;">Informacion</p>
+                    <form class="mb-3" [formGroup]="perfil" *ngFor="let m of medicoLs">
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text">Nombre(s)</span>
+                            <span class="form-control">{{m.nombreMedico}}</span>
+                        </div>
+
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text">Apellido paterno</span>
+                            <span class="form-control">{{m.apellidoPatMedico}}</span>
+                        </div>
+
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text">Apellido materno</span>
+                            <span class="form-control">{{m.apellidoMatMedico}}</span>
+                        </div>
+                        
+                        <div class="mb-3 input-group"> 
+                            <span class="input-group-text">Especialidad</span>
+                            <span class="form-control" *ngFor="let m1 of m.especialidad">{{m1.nombreEspecialidad}}</span>
+                        </div>
+
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text">Telefono</span>
+                            <span class="form-control">{{m.telefono}}</span>
+                        </div>
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-secondary" routerLink="/homem">Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

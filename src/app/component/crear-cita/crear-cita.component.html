@@ -1,0 +1,41 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <span class="text-center text-bg-light"> CREANDO CITA </span>
+                    <form class="mb-3" [formGroup]="generarCitaForm" (ngSubmit)="addCitas()">
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="fecha">Fecha de la cita</label>
+                            <input type="date" class="form-control" formControlName="fechac">
+                            <div class="text-danger" *ngIf="generarCitaForm.get('fechac')?.hasError('required') && generarCitaForm.get('fechac')?.touched">
+                                <span>Falta la fecha <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <label class="input-group-text" for="hora">Hora de la cita</label>
+                            <input type="time" class="form-control" formControlName="horac">
+                            <div class="text-danger" *ngIf="generarCitaForm.get('horac')?.hasError('required') && generarCitaForm.get('horac')?.touched">
+                                <span>Falta el Apellido Paterno <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 input-group">
+                            <!--<input type="text" class="form-control" placeholder="Escriba observaciones para la cita"  formControlName="notasc">-->
+                            <label class="input-group-text" for="cita">Notas</label>
+                            <textarea type="text" class="form-control" placeholder="Escriba observaciones para la cita"  formControlName="notasc"></textarea>
+                            <div class="text-danger" *ngIf="generarCitaForm.get('notasc')?.hasError('required') && generarCitaForm.get('notasc')?.touched">
+                                <span>Falta el paciente <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 text-center">
+                            <button type="submit" class="btn btn-primary">Agregar cita</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

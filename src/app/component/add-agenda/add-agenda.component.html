@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <span class="text-center"> {{ titulo | uppercase }}</span>
+                    <form class="mb-3" [formGroup]="agendaForm" (ngSubmit)="addAgenda()">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Ingrese la cita"  formControlName="citaa">
+                            <div class="text-danger" *ngIf="agendaForm.get('citaa')?.hasError('required') && agendaForm.get('citaa')?.touched">
+                                <span>Falta la cita <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+                        <div class="mb-3 text-center">
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                            <button class="btn btn-secondary" routerLink="/agenda">Volver</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card mt-5">
+                <div class="card-header">
+                    <span class="txt">Perfil del paciente</span>
+                </div>
+                <div class="card-body text-center">
+                    <p class="fs-1 txt">Informacion</p>
+                    <form class="mb-3" [formGroup]="perfil">
+                        <div class="mb-3 input-group text-center">
+                            <span class="input-group-text">Nombre(s)</span>
+                            <input type="text" class="form-control" formControlName="nombrem">
+                        </div>
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text">Apellido Paterno</span>
+                            <input type="text" class="form-control" formControlName="apepatm">
+                        </div>
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text">Apellido materno</span>
+                            <input type="text" class="form-control" formControlName="apematm">
+                        </div>
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text">Fecha de nacimiento</span>
+                            <input type="text" class="form-control" formControlName="fechan">
+                        </div>
+                        <div class="mb-3 input-group">
+                            <span class="input-group-text">Telefono</span>
+                            <input type="text" class="form-control" formControlName="tel">
+                        </div>
+                    </form>
+                </div>
+                                
+                <div class="card-footer">
+                    <small class="text-muted">Last updated 3 mins ago</small>
+                    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                        <button class="btn btn-secondary" routerLink="/homeu">Regresar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

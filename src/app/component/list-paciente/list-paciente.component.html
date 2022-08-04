@@ -1,0 +1,44 @@
+<div class="container mt-5 listaUsuario">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span>LISTA DE PACIENTES</span>
+                    <button class="btn btn-success float-end" routerLink="/paciente/add-paciente">Nuevo</button>
+
+                    <table *ngIf="listaPaciente.length > 0" class="table table-striped mt-2">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombre Completo</th>
+                            <th scope="col">Fecha de nacimiento</th>
+                            <th scope="col">¿Tiene antecedentes?</th>
+                            <th scope="col">¿Tiene citas previas?</th>                            
+                            <th scope="col">Telefono</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let paciente of listaPaciente">
+                            
+                            <td>{{ paciente.nombrePaciente }} {{ paciente.apellidoPatPaciente }} {{ paciente.apellidoMatPaciente }}</td>
+                            <td>{{ paciente.fechaNacimiento }}</td>
+                            <td *ngIf="paciente.antecedentes.length > 0; else antecFalse">Si tiene antecedentes</td>
+                            <ng-template #antecFalse>
+                                <td>No tiene antecedentes</td>
+                            </ng-template>
+
+                            <td>{{ paciente.telefono }}</td>
+
+                            <td>
+                                <i (click)="eliminarPaciente(paciente._id)" class="fa fa-solid fa-trash"></i>
+                                <a [routerLink]="['edit-paciente', paciente._id]" class="fa fa-solid fa-pen-to-square"></a>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <h5 *ngIf="listaPaciente.length == 0">No hay datos.</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

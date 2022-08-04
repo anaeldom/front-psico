@@ -1,0 +1,27 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card mt-5 text-center">
+                <div class="card-body">
+                    <span class="fs-1" style="color: black;">INICIO DE SESION</span>
+                    <p></p>
+                    <form class="mb-3" [formGroup]="loginForm" (ngSubmit)="login()">
+                        <div class="mb-3 input-group">
+                            <label class="input-group-text" for="correo">Correo electronico</label>
+                            <input type="email" [(ngModel)]="user.correo" class="form-control" formControlName="correo" placeholder="Ingresa tu correo">
+                        </div>
+                        <div class="mb-3 input-group">
+                            <label class="input-group-text" for="contrasena">Contraseña</label>
+                            <input type="password" [(ngModel)]="user.contrasena" class="form-control" formControlName="contra" placeholder="Ingresa tu contraseña">
+                        </div>
+                        <div class="mb-3 text-center">
+                            <div class="d-grid gap-2">
+                                <button type="submit" class="btn btn-outline-secondar">ENTRAR</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

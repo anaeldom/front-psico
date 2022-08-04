@@ -1,0 +1,67 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <p class="fs-1 text-center" style="color: black;">REGISTRO</p>
+                    <div class="mb-3">
+                        <form class="mb-3" [formGroup]="medicoForm" (ngSubmit)="addMedico()">
+                            <p class="fs-5" style="color: black;">Ingresa tus datos personales como médico</p>
+                            <div class="mb-3 input-group">
+                                <span class="input-group-text">Nombre(s)</span>
+                                <input type="text" class="form-control" placeholder="Nombre(s) del médico"  formControlName="nombrem">
+                                <div class="text-danger" *ngIf="medicoForm.get('nombrem')?.hasError('required') && medicoForm.get('nombrem')?.touched">
+                                    <span>Falta el nombre <strong>es obligatorio</strong>.</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 input-group">
+                                <span class="input-group-text">Apellido paterno</span>
+                                <input type="text" class="form-control" placeholder="Ingresa tu apellido paterno"  formControlName="apepatm">
+                                <div class="text-danger" *ngIf="medicoForm.get('apepatm')?.hasError('required') && medicoForm.get('apepatm')?.touched">
+                                    <span>Falta el Apellido Paterno <strong>es obligatorio</strong>.</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 input-group">
+                                <span class="input-group-text">Apellido materno</span>
+                                <input type="text" class="form-control" placeholder="Ingresa tu apellido materno"  formControlName="apematm">
+                                <div class="text-danger" *ngIf="medicoForm.get('apematm')?.hasError('required') && medicoForm.get('apematm')?.touched">
+                                    <span>Falta el Apellido Materno <strong>es obligatorio</strong>.</span>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-3 input-group"> 
+                                <label for="Especialidad" class="text-bg-light input-group-text" for="inputGroupSelect01">Especialidad</label> <br>
+                                <select multiple class="form-select" name="Especialidad" id="inputGroupSelect01" formControlName="especialidadm">
+                                    <option disabled>Selecciona uno o más si es tu caso(ctrl+clic)...</option>
+                                    <ng-container *ngFor="let espe of listaEspecialidad">
+                                        <option value="{{espe._id}}">{{espe.nombreEspecialidad}}</option>    
+                                    </ng-container>
+                                </select>
+                                <div class="text-danger" *ngIf="medicoForm.get('especialidadm')?.hasError('required') && medicoForm.get('especialidadm')?.touched">
+                                    <span>Seleccione alguna(s) especialidad(es)<strong>es obligatorio</strong>.</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 input-group">
+                                <span class="input-group-text">Telefono</span>
+                                <input type="number" class="form-control" placeholder="Ingresa tu numero telefonico" formControlName="telefonom">
+                                <div class="text-danger" *ngIf="medicoForm.get('telefonom')?.hasError('required') && medicoForm.get('telefonom')?.touched">
+                                    <span>Falta el número telefonico <strong>es obligatorio</strong>.</span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 d-grid gap-2">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-danger">REGRESAR</button>
+                                    <button type="submit" class="btn btn-secondary">SIGUIENTE</button><!--Lo mando despues al formulario de usuario-->
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,56 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <span class="text-center"> {{ titulo | uppercase }}</span>
+                    <form class="mb-3" [formGroup]="medicoForm" (ngSubmit)="addMedico()">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Nombre(s) del médico"  formControlName="nombrem">
+                            <div class="text-danger" *ngIf="medicoForm.get('nombrem')?.hasError('required') && medicoForm.get('nombrem')?.touched">
+                                <span>Falta el nombre <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Apellido paterno del médico"  formControlName="apepatm">
+                            <div class="text-danger" *ngIf="medicoForm.get('apepatm')?.hasError('required') && medicoForm.get('apepatm')?.touched">
+                                <span>Falta el Apellido Paterno <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Apellido materno del médico"  formControlName="apematm">
+                            <div class="text-danger" *ngIf="medicoForm.get('apematm')?.hasError('required') && medicoForm.get('apematm')?.touched">
+                                <span>Falta el Apellido Materno <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3"> 
+                            <label for="Especialidad">Especialidad</label> <br>
+                            <select multiple name="Especialidad" id="Especialidad" formControlName="especialidadm">
+                                <option value="esp1">Psicosis</option>
+                                <option value="esp2">Bipolar</option>
+                                <option value="esp3">Depresion</option>
+                                <option value="esp4">Autismo</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Ingresa tu numero telefonico" formControlName="telefonom">
+                            <div class="text-danger" *ngIf="medicoForm.get('telefonom')?.hasError('required') && medicoForm.get('telefonom')?.touched">
+                                <span>Falta el número telefonico <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 text-center">
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                            <button class="btn btn-secondary" routerLink="/medico">Volver</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

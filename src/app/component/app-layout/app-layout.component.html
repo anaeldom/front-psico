@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en" class="h-100">
+  
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Anael Dominique">
+    <title>Barra Principal Psico APP</title>
+  </head>
+
+  <body class="d-flex flex-column h-100 text-bg-dark">
+    <header>
+      <nav class="navbar navbar-expand-md navbar-dark fixed-top text-bg-secondary">
+        <div class="container-fluid">
+          <a class="navbar-brand" routerLink="/" ><i class="fa-solid fa-brain" ></i> PSICO APP  <i class="fa-solid fa-grip-lines-vertical"></i></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav ms-auto mb-2 mb-md-0">
+              
+              <ng-container *ngIf="getRole()=='administrador'"> <!-- Solo si es admin mostrara estas opciones -->
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page">INICIASTE COMO ADMIN</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" routerLink="/medico">Medico</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" routerLink="/usuario">Usuario</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" routerLink="/paciente">Paciente</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" routerLink="/citas">Citas</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" routerLink="/especialidad">Especialidad</a>
+                </li>
+              </ng-container>
+              
+              <ng-container *ngIf="getRole()=='paciente'">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page">INICIASTE COMO PACIENTE</a>
+                </li>
+                
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" routerLink="/homeu"><i class="fa-solid fa-house"></i>HOME</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" routerLink="/profileu"><i class="fa-solid fa-user"></i>PERFIL</a>
+                </li>
+              </ng-container>
+
+              <ng-container *ngIf="getRole()=='medico'">
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page">INICIASTE COMO MEDICO</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" routerLink="/homem"><i class="fa-solid fa-house"></i>HOME</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" routerLink="/profilem"><i class="fa-solid fa-user"></i>PERFIL</a>
+                </li>
+              </ng-container>
+
+              <ng-container *ngIf="!authS.loggedIn();else loggedIn"> <!--SABER SI NO ESTA LOGUEADO LA PERSONA-->
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page">NO LOGUEADO</a>                  
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" routerLink="/login"><i class="fa-solid fa-key"></i> INICIAR SESION</a>                  
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" routerLink="/reg1"><i class="fa-solid fa-circle-plus"></i><i class="fa-solid fa-id-badge"></i> NUEVO PACIENTE</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" aria-current="page" routerLink="/regm1"><i class="fa-solid fa-circle-plus"></i><i class="fa-solid fa-user-doctor"></i>NUEVO MEDICO</a>
+                </li>
+              </ng-container>
+
+              <ng-template #loggedIn> <!--SINO MOSTRARA EL CERRAR SESION-->
+                <li class="nav-item">
+                    <a class="nav-link" aria-current="page" (click)="authS.logout()"><i class="fa-solid fa-arrow-right-from-bracket"></i>Cerrar sesion</a>                  
+                </li>
+              </ng-template>
+             
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="flex-shrink-0">
+      <div class="container">
+        <router-outlet></router-outlet> <!-- MUESTRA EL OTRO CONTENIDO-->
+      </div>
+    </main>
+  </body>
+
+</html>

@@ -1,0 +1,35 @@
+<div class="container mt-5 listaEspecialida">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span>LISTA DE ESPECIALIDADES</span>
+                    <button class="btn btn-success float-end" routerLink="/especialidad/add-especialidad">Nuevo</button>
+
+                    <table *ngIf="listaEspecialidad.length > 0" class="table table-striped mt-2">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Descripcion</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let especialidad of listaEspecialidad">
+                            
+                            <td>{{ especialidad.nombreEspecialidad }}</td>
+                            <td>{{ especialidad.descripcion }}</td>
+                            
+                            <td>
+                                <i (click)="eliminarEspecialidad(especialidad._id)" class="fa fa-solid fa-trash"></i>
+                                <i [routerLink]="['edit-especialidad', especialidad._id]" class="fa fa-solid fa-pen-to-square"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <h5 *ngIf="listaEspecialidad.length == 0">No hay datos.</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,51 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <span class="text-center"> {{ titulo | uppercase }}</span>
+                    <form class="mb-3" [formGroup]="citasForm" (ngSubmit)="addCitas()">
+                        <div class="mb-3">
+                            <label for="fecha">Fecha de la cita</label>
+                            <input type="date" class="form-control" formControlName="fechac">
+                            <div class="text-danger" *ngIf="citasForm.get('nombrep')?.hasError('required') && citasForm.get('nombrep')?.touched">
+                                <span>Falta la fecha <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="hora">Hora de la cita</label>
+                            <input type="time" class="form-control" formControlName="horac">
+                            <div class="text-danger" *ngIf="citasForm.get('apepatp')?.hasError('required') && citasForm.get('apepatp')?.touched">
+                                <span>Falta el Apellido Paterno <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Seleccione el medico"  formControlName="medicoc">
+                            <div class="text-danger" *ngIf="citasForm.get('apematp')?.hasError('required') && citasForm.get('apematp')?.touched">
+                                <span>Falta el Medico <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Seleccione el paciente"  formControlName="pacientec">
+                            <div class="text-danger" *ngIf="citasForm.get('apematp')?.hasError('required') && citasForm.get('apematp')?.touched">
+                                <span>Falta el paciente <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Escriba observaciones para la cita"  formControlName="notasc">
+                        </div>
+
+                        <div class="mb-3 text-center">
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                            <button class="btn btn-secondary" routerLink="/citas">Volver</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

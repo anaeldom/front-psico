@@ -1,0 +1,45 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <p class="fs-1 text-center" style="color: black;">REGISTRO</p>
+                    <form class="mb-3" [formGroup]="signup1" (ngSubmit)="signupPaciente()">
+                        <p class="fs-5" style="color: black;">Ingresa tus datos personales como paciente</p>
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Nombre(s)</span>
+                            <input type="text" class="form-control" formControlName="nombrep" placeholder="Ingresa tu nombre(s)">
+                        </div>
+                        
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Apellido Paterno</span>
+                            <input type="text" class="form-control" formControlName="apepp" placeholder="Ingresa tu apellido paterno">
+                        </div>
+                        
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Apellido Materno</span>
+                            <input type="text" class="form-control" formControlName="apemp" placeholder="Ingresa tu apellido materno">
+                        </div>
+
+                        <div class="input-group mb-3"> 
+                            <span class="input-group-text">Fecha de nacimiento</span>
+                            <input type="date" class="form-control" formControlName="fechanacp">
+                        </div>
+
+                        <div class="input-group mb-3">
+                            <span class="input-group-text">Telefono</span>
+                            <input type="number" class="form-control" placeholder="Número telefonico" formControlName="telp">
+                        </div>
+
+                        <div class="mb-3 d-grid gap-2">
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-danger">REGRESAR</button>
+                                <button type="submit" class="btn btn-secondary">SIGUIENTE</button><!--Lo mando despues al formulario de usuario-->
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

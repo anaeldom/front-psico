@@ -1,0 +1,49 @@
+<ng-container>
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <p class="fs-1" style="color: black;">LISTA DE CITAS</p>
+                    <p class="fs-6" style="color: grey;">Nota: Si aparece rojo la fila es por que ya paso de la fecha la cita, caso contrario aun no.</p>
+                    <button class="btn btn-success" (click)="createPDF()" *ngIf="listasCitas2.length > 0"> Reporte </button>
+                    <table class="table" *ngIf="listasCitas2.length > 0">
+                        <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Fecha de la cita</th>
+                            <th scope="col">Hora de la cita</th>                           
+                            <th scope="col">Paciente</th>
+                            <th scope="col">Notas</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <ng-container *ngFor="let citas of listasCitas2;let i = index">    
+                            <ng-container *ngIf="compareDate(citas.fechaCita); else else1">
+                                <tr class="table-danger">
+                                    <th scope="row">{{i}}</th>
+                                    <td> {{citas.fechaCita | date}}</td>
+                                    <td>{{ citas.horaCita }}</td>
+                                    <td *ngFor="let citaN of citas.id_paciente">{{ citaN.nombrePaciente }} {{ citaN.apellidoPatPaciente }} {{ citaN.apellidoMatPaciente }}</td>  
+                                    <td>{{ citas.notas }}</td>
+                                </tr>
+                            </ng-container>
+                            <ng-template #else1>
+                                <tr class="table-success">
+                                    <th scope="row">{{i}}</th>
+                                    <td> {{citas.fechaCita | date}}</td>
+                                    <td>{{ citas.horaCita }}</td>
+                                    <td *ngFor="let citaN of citas.id_paciente">{{ citaN.nombrePaciente }} {{ citaN.apellidoPatPaciente }} {{ citaN.apellidoMatPaciente }}</td>  
+                                    <td>{{ citas.notas }}</td>
+                                </tr>
+                            </ng-template>
+                           
+                        </ng-container>
+                        
+                        </tbody>
+                    </table>
+                    <h5 *ngIf="listaCitas.length == 0" style="color: black;">No hay citas.</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</ng-container>

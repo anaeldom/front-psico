@@ -1,0 +1,37 @@
+<div class="container mt-5 listaUsuario">
+    <div class="row">
+        <div class="col-lg-8 offset-lg-2">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span>LISTA DE USUARIO</span>
+                    <button class="btn btn-success float-end" routerLink="/usuario/add-usuario">Nuevo</button>
+
+                    <table *ngIf="listaUsuario.length > 0" class="table table-striped mt-2">
+                        <thead>
+                          <tr>
+                            <th scope="col">Nombre de usuario</th>
+                            <th scope="col">Correo Electronico</th>
+                            <th scope="col">Tipo de Usuario</th>                            
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let usuario of listaUsuario">
+                            
+                            <td>{{ usuario.nombreUsuario}}</td>
+                            <td>{{ usuario.correo}}</td>
+                            <td>{{ usuario.tipoUsuario}}</td>
+                            
+                            <td>
+                                <i (click)="eliminarUsuario(usuario._id)" class="fa fa-solid fa-trash"></i>
+                                <i [routerLink]="['edit-usuario', usuario._id]" class="fa fa-solid fa-pen-to-square"></i>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+
+                      <h5 *ngIf="listaUsuario.length == 0">No hay datos.</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

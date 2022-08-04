@@ -1,0 +1,51 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body">
+                    <span class="text-center"> {{ titulo | uppercase }}</span>
+                    <form class="mb-3" [formGroup]="pacienteForm" (ngSubmit)="addPaciente()">
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Nombre(s) del paciente"  formControlName="nombrep">
+                            <div class="text-danger" *ngIf="pacienteForm.get('nombrep')?.hasError('required') && pacienteForm.get('nombrep')?.touched">
+                                <span>Falta el nombre <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Apellido paterno del paciente"  formControlName="apepatp">
+                            <div class="text-danger" *ngIf="pacienteForm.get('apepatp')?.hasError('required') && pacienteForm.get('apepatp')?.touched">
+                                <span>Falta el Apellido Paterno <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="Apellido materno del paciente"  formControlName="apematp">
+                            <div class="text-danger" *ngIf="pacienteForm.get('apematp')?.hasError('required') && pacienteForm.get('apematp')?.touched">
+                                <span>Falta el Apellido Materno <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3"> 
+                            <label for="fechadenacimiento">Fecha de nacimiento</label> <br>
+                            <input type="date" class="form-control" formControlName="fechanacp">
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="number" class="form-control" placeholder="Número telefonico" formControlName="telp">
+                            <div class="text-danger" *ngIf="pacienteForm.get('telp')?.hasError('required') && pacienteForm.get('telp')?.touched">
+                                <span>Falta el numero telefonico <strong>es obligatorio</strong>.</span>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 text-center">
+                            <button type="submit" class="btn btn-primary">Agregar</button>
+                            <button class="btn btn-secondary" routerLink="/paciente">Volver</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
